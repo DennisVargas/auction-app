@@ -29,12 +29,3 @@
 5. Run App
 
 `pipenv run python auctionbase.py`
-
-# Description
-
-A project completed for a databases course at Washington State University. 
-
-We completed the project working in groups of 3. 
-
-I learned database design, testing, validation, and implementation.
-
