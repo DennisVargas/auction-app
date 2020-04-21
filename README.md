@@ -1,4 +1,4 @@
-# auction-app
+# auction-app v1.0
 
 > An auction app with search and bid features.
 
