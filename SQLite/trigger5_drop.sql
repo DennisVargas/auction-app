@@ -1,0 +1,2 @@
+PRAGMA FOREIGN_KEYS = ON;
+DROP TRIGGER update_bid_count;

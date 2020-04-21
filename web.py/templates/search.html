@@ -1,0 +1,99 @@
+{% extends "app_base.html" %}
+{% block content %}
+<h3> Search </h3>
+<form method="POST" action="search" style="max-width:400px; width:100%">
+	{% if message is defined %}
+	<div class="alert alert-warning">{{ message }}</div>
+	{% endif %}
+	<!-- <div class="alert alert-info">All fields must be input</div> -->
+	<div class="form-group">
+	  <label for="itemID">Item ID</label>
+	  <input type="text" class="form-control" id="itemID" name="itemID" />
+	</div>
+    <div class="form-group">
+	  <label for="category">Category</label>
+	  <input type="text" class="form-control" id="category" name="category" />
+	</div>
+	<div class="form-group">
+	  <label for="itemDescription">Item Description</label>
+	  <input type="text" name="itemDescription" class="form-control" id="itemDescription" />
+	</div>
+	<div class="form-group">
+	  <label for="minPrice">Minimum Price</label>
+	  <input type="number" name="minPrice" class="form-control" id="minPrice" min="0" step="0.01" />
+	</div>
+	<div class="form-group">
+	  <label for="maxPrice">Maximum Price</label>
+	  <input type="number" name="maxPrice" class="form-control" id="maxPrice" min="0" step="0.01" />
+	</div>
+	<div class="form-group">
+		<label>Status</label><br>
+ 		 <input type="radio" name="status" value="open" id="statusO"> Open |
+ 		 <input type="radio" name="status" value="close" id="statusC"> Closed |
+ 		 <input type="radio" name="status" value="all" id="statusA" checked> All
+	</div>
+	<div class="form-group"><input type="submit" value="Search" class="btn btn-primary"/></div>
+</form>
+
+
+<h3>Result</h3>
+{% if results %}
+<div class="alert alert-success">Successful</div>
+	<style>
+		table, th, td {
+			border: 1px solid black;
+			text-align: center;
+		}
+	</style>
+
+<table style="width: 100%" align="center">
+	<tr>
+    	<th>Item ID</th>
+    	<th>Name</th>
+    	<th>High Bid</th>
+		<th>Buy Price</th>
+		<th>Min Bid</th>
+		<th>Start Time</th>
+		<th>End Time</th>
+		<th>Seller ID</th>
+  	</tr>
+	{% for result in results %}
+	<tr>
+		<td class = "c1" width="90px">
+			<a href = "item_info?id={{result.Item_ID}}">{{result.Item_ID}}</a>
+		</td>
+        <td class = "c1" style="text-align: left; padding: 5px">
+			{{result.Name}}
+		</td>
+        <td class = "c1">
+			${{result.High_Bid}}
+		</td>
+        <td class = "c1">
+			${{result.Buy_Price}}
+		</td>
+        <td class = "c1">
+			${{result.Min_Bid}}
+		</td>
+        <td class = "c1">
+			{{result.Start_Time}}
+		</td>
+        <td class = "c1">
+			{{result.End_Time}}
+		</td>
+        <td class = "c1">
+			{{result.Seller_ID}}
+		</td>
+	</tr>
+    {% endfor %}
+</table>
+
+<!--
+<div class="alert alert-warning">{{ add_result }}</div>
+-->
+{% else %}
+<div class="alert alert-danger">Not successful</div>
+
+{% endif %}
+
+
+{% endblock %}
