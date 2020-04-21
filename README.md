@@ -1,6 +1,8 @@
 # Auction App v1.0
 
-> An auction app with search and bid features. Completed as a group I learned database design, testing, validation, and implementation.
+> An auction app with search and bid features. 
+
+> Completed as a group I learned database design, testing, validation, and implementation.
 
 # directions
 
