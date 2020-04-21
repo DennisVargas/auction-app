@@ -1,0 +1,41 @@
+Constraints
+
+Users:
+1. No two users can share the same UserID.
+    Primary Key "User_ID"
+2. All sellers and bidders must already exist as users.
+	Referential integrity, references "User_ID" from "Users", in the "Items" and "Bids" tables.
+
+Items:
+3. No two items can share the same ItemID
+    Primary key "Item_ID".
+4. Every bid must correspond to an actual item.
+	Referential integrity constraint to "Item_ID" in the "Items" table.
+5. The items for a given category must all exist.
+	Referential integrity constraint to "Item_ID" in the "Items" table.
+6. An item cannot belong to a particular category more than once.
+	Primary key in categories, a combination of "Item_ID" and "Category".
+7. The end time for an auction must always be after its start time.
+	CHECK constraint that tested "Start_Time" < "End_Time".
+8. The Current_Price of an item must always match the Amount of the most recent bid for that item.
+	Trigger1
+
+Bidding:
+9. A user may not bid on an item he or she is also selling.
+	Trigger2
+10. No auction may have two bids at the exact same time.
+	Trigger3
+11. No auction may have a bid before its start time or after its end time.
+    Trigger4
+12. No user can make a bid of the same amount to the same item more than once
+    UNIQUE constraint on (Bidder_ID, Item_ID, Amount).
+13. In every auction, the Number_of_Bids attribute corresponds to the actual number of bids for that particular item.
+	trigger5
+14. Any new bid for a particular item must have a higher amount than any of the previous bids for that particular item.
+	trigger6
+
+Time:
+15. All new bids must be placed at the time which matches the current time of your AuctionBase system.
+	trigger7
+16.  The current time of your AuctionBase system can only advance forward in time, not backward in time.
+	trigger8

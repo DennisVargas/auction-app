@@ -1,0 +1,2 @@
+PRAGMA FOREIGN_KEYS = ON;
+DROP TRIGGER current_bid_match;
