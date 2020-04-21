@@ -1,4 +1,6 @@
-# auction-app v1.0
+# Auction App v1.0
+
+## created by: Dennis Vargas, Amy Phillips and Chris Feener
 
 > An auction app with search and bid features.
 
